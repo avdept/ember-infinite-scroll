@@ -1,4 +1,4 @@
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { bind } from '@ember/runloop';
 import $ from 'jquery';
@@ -17,14 +17,16 @@ export default class InfiniteScroll extends Component {
   scrollable = null;
   $scrollable = null;
 
+  @action
   setup() {
     var scrollable = this.scrollable,
       $scrollable = scrollable ? $(scrollable) : $window;
-
+    console.log('setup');
     this.$scrollable = $scrollable;
     $scrollable.on('scroll.' + this.elementId, bind(this, this.didScroll));
   }
 
+  @action
   teardown() {
     this.$scrollable.off('scroll.' + this.elementId);
   }
