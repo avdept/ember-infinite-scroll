@@ -19,9 +19,10 @@ export default class InfiniteScroll extends Component {
 
   @action
   setup() {
-    var scrollable = this.scrollable,
+    var scrollable = this.args.scrollable,
       $scrollable = scrollable ? $(scrollable) : $window;
     console.log('setup');
+    console.log(this.element);
     this.$scrollable = $scrollable;
     $scrollable.on('scroll.' + this.elementId, bind(this, this.didScroll));
   }
