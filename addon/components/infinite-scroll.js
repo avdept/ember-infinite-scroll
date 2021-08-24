@@ -37,6 +37,7 @@ export default class InfiniteScroll extends Component {
     console.log('scrolled');
     if (!this.isFetching && this.hasMore && this.isNearBottom()) {
       this.safeSet('isFetching', true);
+      console.log(this.isFetching);
       this.sendAction('action', bind(this, this.handleFetch));
     }
   }

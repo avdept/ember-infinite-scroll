@@ -1,1 +1,1 @@
-export { default } from 'ember-infinite-scroll-addon/components/infinite-scroll';
+export { default } from 'ember-infinite-scroll/components/infinite-scroll';

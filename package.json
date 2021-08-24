@@ -1,7 +1,7 @@
 {
-  "name": "ember-infinite-scroll-addon",
-  "version": "0.0.4",
-  "description": "The default blueprint for ember-cli addons.",
+  "name": "ember-infinite-scroll",
+  "version": "0.0.5",
+  "description": "Ember infinite scroll",
   "keywords": [
     "ember-addon"
   ],
