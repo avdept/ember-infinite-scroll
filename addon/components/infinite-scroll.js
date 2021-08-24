@@ -22,9 +22,10 @@ export default class InfiniteScroll extends Component {
     var scrollable = this.args.scrollable,
       $scrollable = scrollable ? $(scrollable) : $window;
     console.log('setup');
-    console.log(this.element);
     this.$scrollable = $scrollable;
-    $scrollable.on('scroll.' + this.elementId, bind(this, this.didScroll));
+    const el = document.getElementById(this.args.scrollable.replace('#', ''))
+    el.addEventListener('scroll',  () =>  this.didScroll());
+    //$scrollable.on('scroll.' + this.elementId, bind(this, this.didScroll));
   }
 
   @action
@@ -33,6 +34,7 @@ export default class InfiniteScroll extends Component {
   }
 
   didScroll() {
+    console.log('scrolled');
     if (!this.isFetching && this.hasMore && this.isNearBottom()) {
       this.safeSet('isFetching', true);
       this.sendAction('action', bind(this, this.handleFetch));
