@@ -1,1 +1,1 @@
-<div {{did-insert this.setup}} {{will-destroy this.teardown}}>{{#if this.isFetching}}{{yield}}{{/if}}</div>
+<div {{did-insert this.setup}} {{will-destroy this.teardown}} class="{{this.args.class}}">{{#if this.isFetching}}{{yield}}{{/if}}</div>

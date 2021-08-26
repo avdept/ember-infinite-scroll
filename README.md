@@ -1,38 +1,53 @@
-ember-infinite-scroll-addon
-==============================================================================
+# ember-infinite-scroll
 
-[Short description of the addon.]
+Infinite scroll for your Ember app. This package inspired by [ember-infinite-scroll](https://github.com/ragnarpeterson/ember-infinite-scroll) which seems to be abandoned. This package includes refactored code which works with ember 3.27.
 
+## Installation
 
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
-* Node.js v10 or above
-
-
-Installation
-------------------------------------------------------------------------------
-
-```
-ember install ember-infinite-scroll-addon
+```bash
+# From within your ember-cli project
+ember install:addon ember-infinite-scroll
 ```
 
+## Usage
 
-Usage
-------------------------------------------------------------------------------
+In your template:
 
-[Longer description of how to use the addon in apps.]
+```hbs
+<ul>
+  {{#each}}
+    <li>{{name}}</li>
+  {{/each}}
+</ul>
+<InfiniteScroll @content=model @hasMore=hasMore>
+  <span>Loading...</span>
+</InfiniteScroll>
+```
 
+Simply display your list of items as you normally would and then add the `infinite-scroll` component directly after. Whatever is provided in the component block will only show up when more content is being fetched.
 
-Contributing
-------------------------------------------------------------------------------
+In the actions hash of your route/controller/component:
 
-See the [Contributing](CONTRIBUTING.md) guide for details.
+```javascript
+fetchMore: function(callback) {
+  var promise = this.fetchMoreItems();
+  callback(promise);
+}
+```
 
+In order for everything to work correctly, it is critical that the callback function is passed the newly created promise that will resolve with the additional items.
 
-License
-------------------------------------------------------------------------------
+If you need the scrollable element to be something other than `window`, just pass the element's selector as the `scrollable` option:
 
-This project is licensed under the [MIT License](LICENSE.md).
+```hbs
+<ul>
+  {{#each}}
+    <li>{{name}}</li>
+  {{/each}}
+</ul>
+{{#infinite-scroll content=model hasMore=hasMore scrollable='#scrollable'}}
+  <span>Loading...</span>
+{{/infinite-scroll}}
+```
+
+If you don't need to asynchronously	request more data, you may want to follow [this suggestion](https://github.com/jasonkriss/ember-infinite-scroll/issues/5) by [@SirZach](https://github.com/SirZach).

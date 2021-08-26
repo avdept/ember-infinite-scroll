@@ -21,11 +21,9 @@ export default class InfiniteScroll extends Component {
   setup() {
     var scrollable = this.args.scrollable,
       $scrollable = scrollable ? $(scrollable) : $window;
-    console.log('setup');
     this.$scrollable = $scrollable;
     const el = document.getElementById(this.args.scrollable.replace('#', ''))
-    el.addEventListener('scroll',  () =>  this.didScroll());
-    //$scrollable.on('scroll.' + this.elementId, bind(this, this.didScroll));
+    el.addEventListener('scroll', () => this.didScroll());
   }
 
   @action
@@ -34,11 +32,11 @@ export default class InfiniteScroll extends Component {
   }
 
   didScroll() {
-    console.log('scrolled');
-    if (!this.isFetching && this.hasMore && this.isNearBottom()) {
+    if (!this.isFetching && this.args.hasMore && this.isNearBottom()) {
       this.safeSet('isFetching', true);
-      console.log(this.isFetching);
-      this.sendAction('action', bind(this, this.handleFetch));
+      this.args.action((promise) => {
+        this.handleFetch(promise);
+      });
     }
   }
 
@@ -69,8 +67,8 @@ export default class InfiniteScroll extends Component {
       bottomTop;
 
     if ($scrollable === $window) {
-      viewPortTop = document.scrollTop();
-      bottomTop = document.height() - window.height();
+      viewPortTop = $(document).scrollTop();
+      bottomTop = $(document).height() - $(window).height();
     } else {
       viewPortTop = $scrollable.scrollTop();
       bottomTop = $scrollable[0].scrollHeight - $scrollable.innerHeight();

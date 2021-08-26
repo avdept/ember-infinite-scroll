@@ -1,13 +1,13 @@
 {
   "name": "ember-infinite-scroll",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Ember infinite scroll",
   "keywords": [
-    "ember-addon"
+    "ember-addon", "infinite-scroll", "infinity-scroll"
   ],
-  "repository": "",
+  "repository": "https://github.com/avdept/ember-infinite-scroll",
   "license": "MIT",
-  "author": "",
+  "author": "Alexander Sinelnikov",
   "directories": {
     "doc": "doc",
     "test": "tests"
