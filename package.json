@@ -1,9 +1,11 @@
 {
   "name": "ember-infinite-scroll",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ember infinite scroll",
   "keywords": [
-    "ember-addon", "infinite-scroll", "infinity-scroll"
+    "ember-addon",
+    "infinite-scroll",
+    "infinity-scroll"
   ],
   "repository": "https://github.com/avdept/ember-infinite-scroll",
   "license": "MIT",
