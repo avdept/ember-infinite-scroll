@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { bind } from '@ember/runloop';
-import jQuery from 'jquery';
+import $ from 'jquery';
 import { set } from '@ember/object';
 
-var $window = jQuery(window);
+var $window = $(window)
 
 var EPSILON = 150;
 
@@ -20,9 +20,9 @@ export default class InfiniteScroll extends Component {
   @action
   setup() {
     var scrollable = this.args.scrollable,
-      $scrollable = scrollable ? jQuery(scrollable) : $window;
+      $scrollable = scrollable ? $(scrollable) : $window;
     this.$scrollable = $scrollable;
-    const el = document.getElementById(this.args.scrollable.replace('#', ''));
+    const el = document.getElementById(this.args.scrollable.replace('#', ''))
     el.addEventListener('scroll', () => this.didScroll());
   }
 
@@ -67,8 +67,8 @@ export default class InfiniteScroll extends Component {
       bottomTop;
 
     if ($scrollable === $window) {
-      viewPortTop = jQuery(document).scrollTop();
-      bottomTop = jQuery(document).height() - jQuery(window).height();
+      viewPortTop = $(document).scrollTop();
+      bottomTop = $(document).height() - $(window).height();
     } else {
       viewPortTop = $scrollable.scrollTop();
       bottomTop = $scrollable[0].scrollHeight - $scrollable.innerHeight();
